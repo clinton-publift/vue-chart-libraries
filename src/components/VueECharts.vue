@@ -1,13 +1,20 @@
 <template>
 <div>
   <h3>Vue ECharts</h3>
-    <v-chart :options="polar"/>
+    <v-chart :options="option"/>
 </div>
 </template>
 <script>
-import ECharts from 'vue-echarts/components/ECharts'
-import 'echarts/lib/chart/line'
-import 'echarts/lib/component/polar'
+import Vue from 'vue'
+import ECharts from 'vue-echarts' // refers to components/ECharts.vue in webpack
+
+// import ECharts modules manually to reduce bundle size
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+
+// If you want to use ECharts extensions, just import the extension package and it will work
+// Taking ECharts-GL as an example:
+// You only need to install the package with `npm install --save echarts-gl` and import it as follows
 
 export default {
   components: {
@@ -23,39 +30,23 @@ export default {
     }
 
     return {
-      polar: {
+      option: {
         title: {
-          text: '极坐标双数值轴'
+          text: 'ECharts entry example'
         },
+        tooltip: {},
         legend: {
-          data: ['line']
+          data:['Sales']
         },
-        polar: {
-          center: ['50%', '54%']
+        xAxis: {
+          data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
         },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'cross'
-          }
-        },
-        angleAxis: {
-          type: 'value',
-          startAngle: 0
-        },
-        radiusAxis: {
-          min: 0
-        },
-        series: [
-          {
-            coordinateSystem: 'polar',
-            name: 'line',
-            type: 'line',
-            showSymbol: false,
-            data: data
-          }
-        ],
-        animationDuration: 2000
+        yAxis: {},
+        series: [{
+          name: 'Sales',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }]
       }
     }
   }

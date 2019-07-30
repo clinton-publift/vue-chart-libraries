@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 
-import Challenges from './components/FrontendMastersChallenges.vue';
 import GChart from './components/GChart.vue';
 import VueBar from './components/VueBars.vue';
 import VueApexChart from './components/VueApexChart.vue';
 import VueTrend from './components/VueTrend.vue';
 import VueEChart from './components/VueECharts.vue';
 import VueEChart3 from './components/VueEcharts3.vue';
+import FrappeChart from './components/FrappeChart';
 
 import VueChart from './containers/ChartContainer.vue';
 
@@ -17,9 +17,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/challenges',
-      name: 'challenges',
-      component: Challenges
+      path: '/frappe',
+      name: 'frappe',
+      component: FrappeChart
     },
     {
       path: '/vue-chart',
